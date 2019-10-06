@@ -1,21 +1,92 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<section class="wrapper">
+  <section class='about-content'>
+    <!--Left screen design-->
+    <div class="col span-1-of-2 box">
+      <div class='left-image'>
+        <img src='assets/GiantRobotLTD_Logo.svg' class='svg-image'>
+        <p class='welcome'>Welcome</p>
+        <p class='content'>Please tell us a bit about yourself to get started</p>
+      </div>
+    </div>
+    <!--right screen design-Form-->
+    <div class="col span-1-of-2 box">
+      <!--Binding to formGroup to perform validation-->
+      <form [formGroup]="loginForm" #formDir="ngForm" novalidate>
 
-<router-outlet></router-outlet>
+        <div class='form-group'>
+          <!--Once form submitted,Form display is hidden.Only form input is shown-->
+          <div [hidden]="formSubmitted">
+            <!--Checking if User entered Firstname.If not, required error mesaage is displayed-->
+            <div *ngIf="loginForm.controls['firstname'].invalid && (loginForm.controls['firstname'].dirty 
+                  || loginForm.controls['firstname'].touched)">
+              <div *ngIf="loginForm.controls['firstname'].errors.required">
+                <label class='labelInfo' for="firstname">FIRST NAME
+                  <span class='red-color'>REQUIRED</span>
+                </label>
+              </div>
+            </div>
+            <div *ngIf="loginForm.controls['firstname'].untouched ||
+                  (loginForm.controls['firstname'].valid && loginForm.controls['firstname'].touched)">
+              <label class='labelInfo' for="firstname">FIRST NAME</label>
+            </div>
+            <input type="text" formControlName="firstname" class='form-control' id='firstname'>
+            <!--Checking if User entered lastname.If not, required error mesaage is displayed-->
+            <div *ngIf="loginForm.controls['lastname'].invalid && (loginForm.controls['lastname'].dirty 
+                  || loginForm.controls['lastname'].touched)">
+              <div *ngIf="loginForm.controls['lastname'].errors.required">
+                <label class='labelInfo' for="lastname">LAST NAME
+                  <span class='red-color'>REQUIRED</span>
+                </label>
+              </div>
+            </div>
+            <div *ngIf="loginForm.controls['lastname'].untouched ||
+                  (loginForm.controls['lastname'].valid && loginForm.controls['lastname'].touched)">
+              <label class='labelInfo' for="lastname">LAST NAME</label>
+            </div>
+            <input type="text" formControlName="lastname" class='form-control' id='lastname'>
+            <!--Checking if User entered address.If not, required error mesaage is displayed-->
+            <div *ngIf="loginForm.controls['address'].invalid && (loginForm.controls['address'].dirty 
+                  || loginForm.controls['address'].touched)">
+              <div *ngIf="loginForm.controls['address'].errors.required">
+                <label class='labelInfo' for="address">ADDRESS
+                  <span class='red-color'>REQUIRED</span>
+                </label>
+              </div>
+            </div>
+            <div *ngIf="loginForm.controls['address'].untouched ||
+                  (loginForm.controls['address'].valid && loginForm.controls['address'].touched)">
+              <label class='labelInfo' for="address">ADDRESS</label>
+            </div>
+            <input type="text" formControlName="address" class='form-control' id='address'>
+            <!--Getting optional address2 Data-->
+            <label class='labelInfo' for="address2">ADDRESS 2 (OPTIONAL)</label>
+            <input type="text" formControlName="address2" class='form-control' id='address2'>
+            <div>
+              <!--Next button enable when all required fields are filled.
+              Once Next button is clicked, Form input details are shown-->
+              <button type="submit" class='nextButton' [disabled]="!(loginForm.controls['firstname'].valid && loginForm.controls['lastname'].valid
+            && loginForm.controls['address'].valid)" (click)='display()'>
+                Next
+                <img src='assets/White_Arrow.svg' class='arrow-img'>
+              </button>
+            </div>
+          </div>
+          <!--Displays entered form input when Next button is clicked-->
+          <div class="submitted-message" *ngIf="formSubmitted">
+            <p><b>You've submitted following Details</b></p>
+            <p>FirstName : {{firstName}}</p>
+            <p>LastName : {{lastName}}</p>
+            <p>Address : {{address}}</p>
+            <p>Address2 : {{address2}}</p>
+            <!--Reset form once details are shown-->
+            <button type="submit" class='nextButton' (click)='reset()'>
+              Reset
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </section>
+</section>

@@ -1,0 +1,263 @@
+/*Merriweather Font*/
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+/*Roboto font */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), 
+       local('Roboto-Bold'), 
+       url(http://themes.googleusercontent.com/static/fonts/roboto/v11/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) 
+       format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), 
+       local('Roboto-Regular'), 
+       url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+       format('woff');
+}
+/*Body*/
+body{
+  width:100%;
+  margin: 0px;
+  padding: 0px;
+}
+/*  SECTIONS  ============================================================================= */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+/*  GRID COLUMN SETUP   ==================================================================== */
+.col {
+	display: block;
+	float:left;
+}
+
+.col:first-child { margin-left: 0; }
+
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col { 
+        margin: 0;
+	}
+}
+.span-1-of-2 {
+	width: 50%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.span-1-of-2 {
+    width: 100%; 
+	}
+}
+/*Assigning entire width to form*/
+.wrapper{
+    width:100%;
+  }
+/*Layout for form border*/
+.about-content{
+    box-shadow: 0px 5px 5px  #777;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Left side form styling*/
+.left-image{
+ height: 100vh;
+ background-color: #585858;
+ padding-left: 177px;
+ padding-right:80px;
+ margin-top: 2px;
+ 
+}
+/*GiantRoboto img*/
+.svg-image{
+  width:177px;
+  text-align: center;
+  height:26px;
+  padding-top: 32px;
+  
+}
+/*Left side content Styling*/
+.welcome{
+  color:#FFFFFF;
+  font-family:'Roboto';
+  font-size:32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 32px;
+}
+.content{
+  color:#EAEAEA;
+  font-family: 'Merriweather';
+  font-size:14px;
+  font-weight: 400;
+  padding-top:16px;
+  margin:0;
+}
+/*Right side form design*/
+.form-group{
+  padding-top: 110px;
+  padding-left:24px;
+  padding-right: 12px;
+  padding-bottom:0px;
+  border:none;
+}
+/*Stle for labels*/
+.labelInfo{
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Merriweather';
+  font-weight: 400;
+  font-size:12px;
+  color:#666666;
+  
+}
+/*style for form input*/
+input{
+  width:376px;
+  padding-left: 16px;
+  border: 1px solid #EAEAEA;
+  border-radius: 6px;
+  resize: vertical;
+  height:48px;
+  margin-bottom:24px;
+  background-color:#F7F7F7;
+  font-family: 'Roboto';
+  font-weight:400;
+  font-size:14px;
+  color:#666666;
+}
+input[type=text]:focus,:visited{
+  outline: none;
+  border: 1px solid #00ADEE;
+  border-radius: 6px;
+  background-color:#FFFFFF;
+}
+/*Style for next and reset button*/
+.nextButton{
+  padding-left:24px;
+  padding-right: 24px;
+  height:48px;
+  margin-top:24px;
+  background-color: #FFAB44;
+  border-radius: 6px;
+  border:1px solid #FFAB44;
+  color:#FFFFFF;
+  font-family: 'Roboto';
+  font-size:16px;
+  font-weight:700;
+}
+/* Show error-red border if input invalid*/
+#firstname.ng-invalid.ng-dirty.ng-touched,#firstname.ng-touched,
+#lastname.ng-invalid.ng-dirty.ng-touched,#lastname.ng-touched,
+#address.ng-invalid.ng-dirty.ng-touched,#address.ng-touched
+{ 
+  border: 1px solid red;
+}
+/*Valid input-Show blue border*/
+#firstname.ng-valid.ng-dirty.ng-touched,
+#lastname.ng-valid.ng-dirty.ng-touched,
+#address.ng-valid.ng-dirty.ng-touched,
+#address2.ng-valid.ng-dirty.ng-touched{
+  border: 1px solid #00ADEE;
+}
+/*Styling for required text*/
+span.red-color{
+  color:red;
+}
+/*Styling for arrow near next button*/
+.arrow-img{
+  width:10px;
+  height:10px;
+  margin-left:8px;
+}
+/*Styling for displaying entered form texts*/
+.submitted-message{
+  color:#666666;
+  font-family: 'Merriweather';
+  font-size:14px;
+  font-weight: 400;
+}
+/* Resize screen content for width 721px to 1155px*/
+@media only screen and (max-width: 1155px){
+    .left-image{
+      padding-left: 60px;
+      padding-right: 8px;
+    }
+    input{
+      width:300px;
+    }
+    .form-group{
+    padding-left:18px;
+    padding-right: 4px;
+    }
+}
+/* Resize screen content for width 481px to 720px*/
+@media only screen and (max-width: 720px){
+  .left-image{
+    padding-left: 40px;
+    padding-right: 8px;
+  }
+  input{
+    width:200px;
+  }
+  .form-group{
+    padding-left:10px;
+    padding-right: 4px;
+  }
+}
+/* Resize screen content till width 480px-Mobile view*/
+@media only screen and (max-width: 480px){
+  .left-image{
+    padding-left: 20px;
+    padding-right: 8px;
+    height:auto;
+  }
+  input{
+    width:75vw;
+  }
+  .form-group{
+    padding-top: 32px;
+    padding-left:20px;
+    padding-right: 8px;
+  }
+  .welcome{
+    font-size:24px;
+  }
+  .content{
+    padding-bottom:32px;
+    padding-right: 4px;
+  }
+  .nextButton{
+    margin-bottom: 24px;
+    padding-right:8px;
+    width:80vw;
+  }
+  
+}
+@media only screen and (max-width: 250px){
+  .left-image{
+    padding-left: 15px;
+    padding-right: 8px;
+    height:auto;
+  }
+  input{
+    width:60vwvw;
+  }
+  .form-group{
+    padding-left:15px;
+    padding-right: 8px;
+  }
+  .nextButton{
+    width:65vw;
+  }
+  
+}
