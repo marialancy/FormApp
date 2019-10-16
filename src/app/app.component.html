@@ -61,6 +61,8 @@
             <!--Getting optional address2 Data-->
             <label class='labelInfo' for="address2">ADDRESS 2 (OPTIONAL)</label>
             <input type="text" formControlName="address2" class='form-control' id='address2'>
+            <label class='labelInfo' for="phone">PHONE NUMBER</label>
+            <input type="text" formControlName="phone" class='form-control' id='phone' [(ngModel)]='phone' (change)=validate($event) >
             <div>
               <!--Next button enable when all required fields are filled.
               Once Next button is clicked, Form input details are shown-->
